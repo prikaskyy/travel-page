@@ -1,0 +1,21 @@
+@keyframes bounce {
+  from {
+    transform: translateY(-15px);
+  }
+  to {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes slide-in-anim {
+  100% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes fade-anim {
+  100% {
+    opacity: 1;
+  }
+}

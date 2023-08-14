@@ -1,0 +1,16 @@
+@use "../util" as *;
+@media screen and (max-width: 1023px) {
+  .bg-element {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bg-element {
+    position: absolute;
+    top: 25%;
+    height: auto;
+    right: 0;
+    opacity: 1;
+  }
+}

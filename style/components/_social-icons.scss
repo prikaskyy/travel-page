@@ -1,0 +1,68 @@
+@use "../util" as *;
+
+.social-icons {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  left: 20px;
+  z-index: 2;
+
+  @media screen and (max-width: $breakpoint-tab) {
+    left: 0px;
+  }
+
+  .button {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    margin: 15px 5px;
+    overflow: hidden;
+    background: $white;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid $green;
+    transition: width 0.3s ease-out;
+
+    &:hover {
+      background-color: $dark-green;
+      border: 1px solid $dark-green;
+      color: $white;
+      transition: width 0.3s ease-out;
+      box-shadow: 0px 0px 37px 0px $dark-green;
+      @media screen and (min-width: $breakpoint-mob) {
+        width: 200px;
+      }
+    }
+
+    .icon {
+      display: inline-block;
+      height: 60px;
+      width: 60px;
+      text-align: center;
+      border-radius: 50px;
+      box-sizing: border-box;
+      //   transition: all 0.3s ease-out;
+
+      i {
+        font-size: 25px;
+        line-height: 60px;
+        // transition: all 0s ease-out;
+      }
+    }
+
+    span {
+      font-size: $fs-button-green;
+      font-weight: 500;
+      margin-left: 10px;
+      transition: all 0s ease-out;
+
+      @media screen and (max-width: $breakpoint-ntb) {
+        font-size: $fs-button-green-ntb;
+      }
+      @media screen and (max-width: $breakpoint-mob) {
+        font-size: $fs-button-green-mob;
+      }
+    }
+  }
+}

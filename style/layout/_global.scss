@@ -1,0 +1,89 @@
+@use "../util" as *;
+
+body {
+  background-color: $white;
+  font-family: $font-regular;
+  height: 100vh;
+}
+
+h1 {
+  font-family: $font-black;
+  font-size: $fs-heading;
+  color: $black;
+  line-height: 50px;
+  @media screen and (max-width: $breakpoint-ntb) {
+    font-size: $fs-heading-ntb;
+    line-height: 40px;
+  }
+  @media screen and (max-width: $breakpoint-mob) {
+    font-size: $fs-heading-mob;
+    line-height: 30px;
+  }
+}
+
+a {
+  color: $black;
+}
+
+p {
+  text-align: left;
+  color: $text-color;
+  font-size: $fs-text;
+  text-align: justify;
+
+  @media screen and (max-width: $breakpoint-ntb) {
+    font-size: $fs-text-ntb;
+  }
+  @media screen and (max-width: $breakpoint-mob) {
+    font-size: $fs-text-mob;
+  }
+}
+
+button {
+  display: inline-block;
+  background-color: $white;
+  padding: 5px 30px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid $orange;
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: $fs-button;
+  color: $orange;
+  cursor: pointer;
+
+  @media screen and (max-width: $breakpoint-ntb) {
+    font-size: $fs-button-ntb;
+  }
+  @media screen and (max-width: $breakpoint-mob) {
+    font-size: $fs-button-mob;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: $orange;
+    height: 150px;
+    width: 250px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+  }
+
+  &:hover {
+    color: #fff;
+    box-shadow: 0px 0px 37px 0px $orange;
+    transition: all 0.7s ease-out;
+
+    &:before {
+      top: -30px;
+      left: -30px;
+    }
+  }
+  &:active:before {
+    background: $orange;
+    transition: all 0s;
+  }
+}

@@ -1,0 +1,235 @@
+@use "../util" as *;
+
+.sekce {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .sekce-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    justify-items: stretch;
+    grid-template-areas:
+      "bg-image text-h1"
+      "bg-image text-box"
+      "bg-image photo-box";
+    height: inherit;
+
+    @media screen and (max-width: $breakpoint-tab) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        "text-h1"
+        "bg-image"
+        "text-box"
+        "photo-box";
+    }
+
+    .sekce-bg-image {
+      background-image: url("../assets/img/hero1.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      grid-area: bg-image;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      opacity: 0;
+      animation: fade-anim 1s ease-out forwards;
+
+      @media screen and (max-width: $breakpoint-tab) {
+        background-image: url("../assets/img/hero2.png");
+        height: 60vw;
+        background-size: contain;
+        animation: slide-in-anim 1s ease-out forwards;
+      }
+
+      @media screen and (max-width: $breakpoint-mob) {
+        justify-content: end;
+      }
+
+      .more-trips {
+        display: flex;
+        align-items: center;
+        align-self: end;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        @media screen and (max-width: $breakpoint-tab) {
+          margin-left: 40px;
+        }
+        @media screen and (max-width: $breakpoint-mob) {
+          display: none;
+        }
+
+        .bounce {
+          animation: bounce 1.5s ease-in-out infinite alternate;
+        }
+
+        span {
+          padding: 10px 30px;
+          margin-top: -15px;
+          color: $dark-green;
+          font-size: $fs-button-green;
+
+          @media screen and (max-width: $breakpoint-ntb) {
+            font-size: $fs-button-green-ntb;
+            @include more-photos-bg;
+            box-shadow: 5px 6px 6px #00000029;
+          }
+        }
+      }
+
+      .price {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: -8px 14px 27px #00000029;
+        border-radius: 12px;
+        background-color: $white;
+        padding: 10px 25px;
+
+        @media screen and (max-width: $breakpoint-tab) {
+          margin-right: 50px;
+        }
+        @media screen and (max-width: $breakpoint-mob) {
+          margin-right: 10px;
+        }
+
+        & :nth-child(1) {
+          color: $green;
+          font-size: $fs-days;
+          font-family: $font-black;
+          @media screen and (max-width: $breakpoint-ntb) {
+            font-size: $fs-days-ntb;
+          }
+          @media screen and (max-width: $breakpoint-mob) {
+            font-size: $fs-days-mob;
+          }
+        }
+        & :nth-child(3) {
+          font-size: $fs-price;
+          @media screen and (max-width: $breakpoint-ntb) {
+            font-size: $fs-price-ntb;
+          }
+          @media screen and (max-width: $breakpoint-mob) {
+            font-size: $fs-price-mob;
+          }
+        }
+        hr {
+          display: block;
+          height: 1px;
+          border: 0;
+          border-top: 4px solid $orange;
+          width: 70%;
+        }
+      }
+    }
+
+    .text-h1 {
+      margin-top: 30px;
+      grid-area: text-h1;
+      opacity: 0;
+      animation: slide-in-anim 1s ease-out forwards;
+
+      h1 {
+        white-space: pre-line;
+        text-shadow: 0px 16px 21px #00000029;
+        padding-left: 30px;
+
+        span {
+          white-space: nowrap;
+
+          span {
+            color: $green;
+            font-family: $font-regular-bold;
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .text-box {
+      grid-area: text-box;
+      border-left: 4px solid $green;
+      margin-top: 60px;
+      margin-bottom: 80px;
+      max-width: 80%;
+      opacity: 0;
+      animation: slide-in-anim 0.85s 0.15s ease-out forwards;
+
+      @media screen and (max-width: $breakpoint-mob) {
+        margin-top: 30px;
+        padding-right: 20px;
+      }
+      @media screen and (max-width: $breakpoint-tab) {
+        margin-left: 80px;
+      }
+
+      p {
+        padding-bottom: 40px;
+        padding-left: 30px;
+      }
+
+      button {
+        margin-left: 30px;
+      }
+    }
+
+    .photo-box {
+      grid-area: photo-box;
+      opacity: 0;
+      animation: slide-in-anim 0.7s 0.3s ease-out forwards;
+
+      .photos {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        height: 190px;
+        scroll-behavior: smooth;
+
+        @media screen and (max-width: $breakpoint-tab) {
+          margin-bottom: 70px;
+        }
+
+        .more-photos {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          z-index: 1;
+          position: fixed;
+          bottom: 80px;
+          right: 60px;
+
+          @media screen and (max-width: $breakpoint-ntb) {
+            bottom: 140px;
+          }
+          @media screen and (max-width: $breakpoint-tab) {
+            bottom: 110px;
+          }
+
+          .more-photos-bg-text {
+            @include more-photos-bg;
+            padding: 10px 30px;
+          }
+
+          .more-photos-bg-icon {
+            @include more-photos-bg;
+            padding: 14px;
+
+            @media screen and (max-width: $breakpoint-mob) {
+              padding: 10px;
+            }
+
+            img {
+              width: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@mixin more-photos-bg {
+  font-size: 26px;
+  color: hsla(117, 92%, 30%, 1);
+  background-color: hsla(0, 0%, 100%, 0.75);
+  border-radius: 50px;
+  cursor: pointer;
+
+  @media screen and (max-width: 1560px) {
+    font-size: 22px;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 17px;
+  }
+}
